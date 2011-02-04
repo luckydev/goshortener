@@ -1,7 +1,7 @@
-h1.GoShortener
+h1. GoShortener
 Uses Google URL shortener API service to shorten/expand given URLs.
 
-h2.Usage
+h2. Usage
 
 Initialize and shorten urls
 @go = Go.new@
@@ -10,5 +10,5 @@ Initialize and shorten urls
 To expand short urls
 long_url = go.lengthen short_url
 
-h2.Author
+h2. Author
 lakshmanan (lucky.developer@gmail.com)
