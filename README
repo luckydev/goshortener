@@ -1,0 +1,7 @@
+GoShortener
+-----------
+Uses Google URL shortener API service to shorten/expand given URLs.
+
+Author
+----------
+lakshmanan (lucky.developer@gmail.com)
