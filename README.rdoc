@@ -1,0 +1,16 @@
+= GoShortener
+
+Uses Google URL shortener API service to shorten/expand given URLs.
+
+== Usage
+
+=== Initialize and shorten urls
+  go = Go.new
+  short_url = go.shorten "http://github.com/luckydev"
+
+=== To expand short urls
+  long_url = go.lengthen short_url
+
+== Author
+
+lakshmanan (lucky.developer@gmail.com)
