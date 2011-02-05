@@ -12,7 +12,7 @@ class GoShortener
   end
 
   def shorten(long_url)
-    if long_url.is_a? String
+    if long_url.is_a?(String) && long_url.present?
       request_json = {'longUrl' => long_url}.to_json
       response = RestClient.post @base_url, request_json, :accept => :json, :content_type => :json
     else
