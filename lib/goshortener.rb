@@ -12,11 +12,17 @@ class GoShortener
   end
 
   def shorten(long_url)
-    if long_url.is_a?(String) && long_url.present?
+    if long_url.is_a?(String)
       request_json = {'longUrl' => long_url}.to_json
-      response = RestClient.post @base_url, request_json, :accept => :json, :content_type => :json
+
+      begin
+        response = RestClient.post @base_url, request_json, :accept => :json, :content_type => :json
+      rescue
+        raise "Please provide a valid url string"
+      end
+
     else
-      raise "Please provide a valid Long url string"
+      raise "Please provide a valid url string"
     end
     response = JSON.parse response
     short_url = response["id"]
@@ -31,20 +37,26 @@ class GoShortener
     # Examples:
     # go = GoShortener.new
     #
-    # go.lengthen("http://goo.gl/TCZHi") #=> "http://github.com/luckydev"
+    # go.lengthen("http://goo.gl/TCZHi")      #=> "http://github.com/luckydev"
     #
-    # go.lengthen("http://www.goo.gl/TCZHi") #=> Error
-    # go.lengthen("goo.gl/TCZHi")        #=> Error
-    # go.lengthen("http://goo.gl/")      #=> Error
-    # go.lengthen("http://goo.gl/T")     #=> RestClient::BadRequest: 400 Bad Request
-    # go.lengthen("http://bit.ly/TCZHi") #=> Error
+    # go.lengthen("http://www.goo.gl/TCZHi")  #=> Error
+    # go.lengthen("goo.gl/TCZHi")             #=> Error
+    # go.lengthen("http://goo.gl/")           #=> Error
+    # go.lengthen("http://goo.gl/T")          #=> Error
+    # go.lengthen("http://bit.ly/TCZHi")      #=> Error
     #
     ##
-    if short_url.is_a?(String) && short_url =~ /^http:\/\/goo\.gl\/.+$/
+    if short_url.is_a?(String)
       request_params = {:shortUrl => short_url}
-      response = RestClient.get @base_url, :params => request_params
+
+      begin
+        response = RestClient.get @base_url, :params => request_params
+      rescue
+        raise "Please provide a valid goo.gl short url to lengthen"
+      end
+
     else
-      raise "Please provide a valid short url string"
+      raise "Please provide a valid goo.gl short url to lengthen"
     end
     response = JSON.parse response
     long_url = response["longUrl"]
