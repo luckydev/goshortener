@@ -11,6 +11,16 @@ Uses Google URL shortener API service to shorten/expand given URLs.
 === To expand short urls
   long_url = go.lengthen short_url
 
+=== Example usage in irb
+  ruby-1.9.2-p136 :001 > require "goshortener"
+   => true 
+  ruby-1.9.2-p136 :002 > go = GoShortener.new
+   => #<GoShortener:0x93b35e0 @base_url="https://www.googleapis.com/urlshortener/v1/url"> 
+  ruby-1.9.2-p136 :003 > go.shorten "http://github.com/luckydev"
+   => "http://goo.gl/TCZHi" 
+  ruby-1.9.2-p136 :004 > go.lengthen "http://goo.gl/TCZHi"
+   => "http://github.com/luckydev" 
+
 == Author
 
 lakshmanan (lucky.developer@gmail.com)
