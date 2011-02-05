@@ -4,6 +4,12 @@ Uses Google URL shortener API service to shorten/expand given URLs.
 
 == Usage
 
+=== Installation
+  gem install goshortener
+
+of if you are using bundler, add the following line to your Gemfile.
+  gem "goshortener"
+
 === Initialize and shorten urls
   go = GoShortener.new
   short_url = go.shorten "http://github.com/luckydev"
