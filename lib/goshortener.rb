@@ -5,7 +5,7 @@ require "rest_client"
 require "json"
 
 
-class Go
+class GoShortener
 
   def initialize
     @base_url = "https://www.googleapis.com/urlshortener/v1/url"

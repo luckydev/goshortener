@@ -5,7 +5,7 @@ Uses Google URL shortener API service to shorten/expand given URLs.
 == Usage
 
 === Initialize and shorten urls
-  go = Go.new
+  go = GoShortener.new
   short_url = go.shorten "http://github.com/luckydev"
 
 === To expand short urls
