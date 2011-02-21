@@ -10,8 +10,14 @@ Uses Google URL shortener API service to shorten/expand given URLs.
 of if you are using bundler, add the following line to your Gemfile.
   gem "goshortener"
 
-=== Initialize and shorten urls
+=== Initialize
+  go = GoShortener.new(YOUR_API_KEY)
+or
   go = GoShortener.new
+
+Using Google API keys will increase the usage quota.
+
+=== Shorten urls
   short_url = go.shorten "http://github.com/luckydev"
 
 === To expand short urls
@@ -20,8 +26,8 @@ of if you are using bundler, add the following line to your Gemfile.
 === Example usage in irb
   ruby-1.9.2-p136 :001 > require "goshortener"
    => true 
-  ruby-1.9.2-p136 :002 > go = GoShortener.new
-   => #<GoShortener:0x93b35e0 @base_url="https://www.googleapis.com/urlshortener/v1/url"> 
+  ruby-1.9.2-p136 :002 > go = GoShortener.new("yourapikeyfromgoogle")
+   => #<GoShortener:0x93b35e0 @base_url="https://www.googleapis.com/urlshortener/v1/url", @api_key="yourapikeyfromgoogle"> 
   ruby-1.9.2-p136 :003 > go.shorten "http://github.com/luckydev"
    => "http://goo.gl/TCZHi" 
   ruby-1.9.2-p136 :004 > go.lengthen "http://goo.gl/TCZHi"
