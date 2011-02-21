@@ -1,5 +1,4 @@
 require "rubygems"
-require "bundler/setup"
 
 require "rest_client"
 require "json"
@@ -7,16 +6,24 @@ require "json"
 
 class GoShortener
 
-  def initialize
+  #initialize with/without api key
+  def initialize(api_key="")
+    unless api_key == ""
+      @api_key = api_key
+    else
+      puts "[GoShortener] Use Google API key to increase your usage quota."
+    end
     @base_url = "https://www.googleapis.com/urlshortener/v1/url"
   end
 
+  #Given a long URL, Returns the true short url using http://goo.gl service
   def shorten(long_url)
     if long_url.is_a?(String)
       request_json = {'longUrl' => long_url}.to_json
+      request_url = @api_key ? (@base_url + "?key=#{@api_key}") : @base_url
 
       begin
-        response = RestClient.post @base_url, request_json, :accept => :json, :content_type => :json
+        response = RestClient.post request_url, request_json, :accept => :json, :content_type => :json
       rescue
         raise "Please provide a valid url string"
       end
@@ -29,25 +36,11 @@ class GoShortener
     return short_url
   end
 
+  #Given a short URL, Returns the true long url using http://goo.gl service
   def lengthen(short_url)
-    ##
-    # Accepts a short url shortened by http://goo.gl and returns original
-    # long url.
-    # 
-    # Examples:
-    # go = GoShortener.new
-    #
-    # go.lengthen("http://goo.gl/TCZHi")      #=> "http://github.com/luckydev"
-    #
-    # go.lengthen("http://www.goo.gl/TCZHi")  #=> Error
-    # go.lengthen("goo.gl/TCZHi")             #=> Error
-    # go.lengthen("http://goo.gl/")           #=> Error
-    # go.lengthen("http://goo.gl/T")          #=> Error
-    # go.lengthen("http://bit.ly/TCZHi")      #=> Error
-    #
-    ##
     if short_url.is_a?(String)
       request_params = {:shortUrl => short_url}
+      request_params.merge!(:key => @api_key) if @api_key
 
       begin
         response = RestClient.get @base_url, :params => request_params
