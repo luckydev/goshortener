@@ -1,4 +1,4 @@
-= GoShortener !http://stillmaintained.com/jeffkreeftmeijer/fuubar.png!
+= GoShortener "http://stillmaintained.com/jeffkreeftmeijer/fuubar.png"
 
 Uses Google URL shortener API service to shorten/expand given URLs.
 
