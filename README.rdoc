@@ -1,4 +1,4 @@
-= GoShortener http://stillmaintained.com/jeffkreeftmeijer/fuubar.png
+= GoShortener http://dl.dropbox.com/u/2735646/still-maintained.png 
 
 Uses Google URL shortener API service to shorten/expand given URLs.
 
