@@ -7,7 +7,7 @@ Uses Google URL shortener API service to shorten/expand given URLs.
 === Installation
   gem install goshortener
 
-of if you are using bundler, add the following line to your Gemfile.
+of if you are using bundler in your project, add the following line to your Gemfile.
   gem "goshortener"
 
 === Initialize
@@ -15,7 +15,8 @@ of if you are using bundler, add the following line to your Gemfile.
 or
   go = GoShortener.new
 
-Using Google API keys will increase the usage quota.
+Using Google API keys will increase the usage quota. 
+
 
 === Shorten urls
   short_url = go.shorten "http://github.com/luckydev"
@@ -32,6 +33,15 @@ Using Google API keys will increase the usage quota.
    => "http://goo.gl/TCZHi" 
   ruby-1.9.2-p136 :004 > go.lengthen "http://goo.gl/TCZHi"
    => "http://github.com/luckydev" 
+
+== Usage in Rails project
+
+If you are using goshortener in a rails project, you can put the following lines in an initializer file.
+For example, in config/initializers/goshortener.rb
+
+  GO = GoShortener.new(YOUR_API_KEY)
+
+And anywhere in your rails project, you can call  GO.shorten or GO.lengthen
 
 == Author
 
