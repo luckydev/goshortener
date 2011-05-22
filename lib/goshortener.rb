@@ -1,6 +1,6 @@
 require "rubygems"
-require "rest_client"
-require "json"
+require "bundler/setup"
+Bundler.require(:default)
 
 class InvalidUrlError < Exception; end
 
