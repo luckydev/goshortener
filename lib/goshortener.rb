@@ -1,5 +1,4 @@
 require "rubygems"
-
 require "rest_client"
 require "json"
 
@@ -10,8 +9,6 @@ class GoShortener
   def initialize(api_key="")
     unless api_key == ""
       @api_key = api_key
-    else
-      puts "[GoShortener] Use Google API key to increase your usage quota."
     end
     @base_url = "https://www.googleapis.com/urlshortener/v1/url"
   end
