@@ -3,6 +3,7 @@ GEM
   specs:
     json (1.5.1)
     mime-types (1.16)
+    rake (0.8.7)
     rest-client (1.6.1)
       mime-types (>= 1.16)
 
@@ -11,4 +12,5 @@ PLATFORMS
 
 DEPENDENCIES
   json
+  rake
   rest-client
