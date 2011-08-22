@@ -17,7 +17,6 @@ or
 
 Using Google API keys will increase the usage quota. 
 
-
 === Shorten urls
   short_url = go.shorten "http://github.com/luckydev"
 
