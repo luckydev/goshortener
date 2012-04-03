@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Goshortener by luckydev</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Goshortener</h1>
+        <p>GoShortener shortens urls to http://goo.gl style short urls.</p>
+        <p class="view"><a href="https://github.com/luckydev/goshortener">View the Project on GitHub <small>luckydev/goshortener</small></a></p>
+        <ul>
+          <li><a href="https://github.com/luckydev/goshortener/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/luckydev/goshortener/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/luckydev/goshortener">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>GoShortener.</h3>
+
+<p>Its a small ruby gem that uses Google URL shortener API service to shorten/expand given URLs.</p>
+
+<pre><code>$ gem install goshortener
+</code></pre>
+
+<h3>Initialize</h3>
+
+<div class="highlight">
+<pre><span class="n">go</span> <span class="o">=</span> <span class="no">GoShortener</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">YOUR_API_KEY</span><span class="p">)</span>
+</pre>
+</div>
+
+
+<h3>Shorten URLs</h3>
+
+<div class="highlight">
+<pre><span class="n">short_url</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">shorten</span> <span class="s2">"<a href="http://github.com/luckydev">http://github.com/luckydev</a>"</span>
+</pre>
+</div>
+
+
+<h3>Lengthen URLs</h3>
+
+<div class="highlight">
+<pre><span class="n">long_url</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">lengthen</span> <span class="n">short_url</span>
+</pre>
+</div>
+
+
+<h3>Example usage in IRB</h3>
+
+<pre><code>ruby-1.9.2-p136 :001 &gt; require "goshortener"
+ =&gt; true 
+ruby-1.9.2-p136 :002 &gt; go = GoShortener.new("yourapikeyfromgoogle")
+ =&gt; #&lt;GoShortener:0x93b35e0 @base_url="<a href="https://www.googleapis.com/urlshortener/v1/url">https://www.googleapis.com/urlshortener/v1/url</a>", @api_key="yourapikeyfromgoogle"&gt; 
+ruby-1.9.2-p136 :003 &gt; go.shorten "<a href="http://github.com/luckydev">http://github.com/luckydev</a>"
+ =&gt; "<a href="http://goo.gl/TCZHi">http://goo.gl/TCZHi</a>" 
+ruby-1.9.2-p136 :004 &gt; go.lengthen "<a href="http://goo.gl/TCZHi">http://goo.gl/TCZHi</a>"
+ =&gt; "<a href="http://github.com/luckydev">http://github.com/luckydev</a>"
+</code></pre>
+
+<h3>Example usage in rails apps</h3>
+
+<p>If you are using goshortener in a rails project, you can put the following lines in an initializer file. For example, in config/initializers/goshortener.rb</p>
+
+<div class="highlight">
+<pre><span class="no">GO</span> <span class="o">=</span> <span class="no">GoShortener</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">YOUR_API_KEY</span><span class="p">)</span>
+</pre>
+</div>
+
+
+<p>And then use <code>GO</code> constant throughout your app to shorten/expand URLs </p>
+
+<h3>Author</h3>
+
+<p>Anand (<a href="/luckydev" class="user-mention">@luckydev</a> on Github)</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/luckydev">luckydev</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
