@@ -3,7 +3,7 @@ Gem::Specification.new do |spec|
   spec.version = "1.2.2"
   spec.summary = %q{GoShortener uses Google URL shortener service to shorten/expand urls.}
   spec.description = %q{GoShortener uses Google URL shortener service to shorten/expand urls.}
-  spec.homepage = "http://github.com/luckydev/goshortener" 
+  spec.homepage = "http://github.com/luckydev/goshortener"
   spec.authors = ["lakshmanan"]
   spec.email = "lucky.developer@gmail.com"
 
