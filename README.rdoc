@@ -44,4 +44,4 @@ And anywhere in your rails project, you can call  GO.shorten or GO.lengthen
 
 == Author
 
-lakshmanan (lucky.developer@gmail.com)
+Anand (lucky.developer@gmail.com)
