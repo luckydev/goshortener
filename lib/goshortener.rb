@@ -19,7 +19,7 @@ class GoShortener
       request_url = @api_key ? (@base_url + "?key=#{@api_key}") : @base_url
       begin
         response = RestClient.post request_url, request_json, :accept => :json, :content_type => :json
-      rescue 
+      rescue
         raise InvalidUrlError, "Please provide a valid URL"
       end
     else
@@ -31,8 +31,17 @@ class GoShortener
 
   #Given a short URL, Returns the true long url using http://goo.gl service
   def lengthen(short_url)
+    url_info(short_url)["longUrl"]
+  end
+
+  def analytics(short_url)
+    url_info(short_url, :projection => "FULL")["analytics"]
+  end
+
+  private
+  def url_info(short_url, request_params = {})
     if short_url.is_a?(String)
-      request_params = {:shortUrl => short_url}
+      request_params.merge!(:shortUrl => short_url)
       request_params.merge!(:key => @api_key) if @api_key
       begin
         response = RestClient.get @base_url, :params => request_params
@@ -43,7 +52,6 @@ class GoShortener
       raise "Please provide a valid http://goo.gl url String"
     end
     response = JSON.parse response
-    response["longUrl"]
   end
 
-end 
+end
