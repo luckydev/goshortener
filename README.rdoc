@@ -1,0 +1,47 @@
+= GoShortener http://travis-ci.org/luckydev/goshortener.png
+
+Uses Google URL shortener API service to shorten/expand given URLs.
+
+== Usage
+
+=== Installation
+  gem install goshortener
+
+of if you are using bundler in your project, add the following line to your Gemfile.
+  gem "goshortener"
+
+=== Initialize
+  go = GoShortener.new(YOUR_API_KEY)
+or
+  go = GoShortener.new
+
+Using Google API keys will increase the usage quota. 
+
+=== Shorten urls
+  short_url = go.shorten "http://github.com/luckydev"
+
+=== To expand short urls
+  long_url = go.lengthen short_url
+
+=== Example usage in irb
+  ruby-1.9.2-p136 :001 > require "goshortener"
+   => true 
+  ruby-1.9.2-p136 :002 > go = GoShortener.new("yourapikeyfromgoogle")
+   => #<GoShortener:0x93b35e0 @base_url="https://www.googleapis.com/urlshortener/v1/url", @api_key="yourapikeyfromgoogle"> 
+  ruby-1.9.2-p136 :003 > go.shorten "http://github.com/luckydev"
+   => "http://goo.gl/TCZHi" 
+  ruby-1.9.2-p136 :004 > go.lengthen "http://goo.gl/TCZHi"
+   => "http://github.com/luckydev" 
+
+== Usage in Rails project
+
+If you are using goshortener in a rails project, you can put the following lines in an initializer file.
+For example, in config/initializers/goshortener.rb
+
+  GO = GoShortener.new(YOUR_API_KEY)
+
+And anywhere in your rails project, you can call  GO.shorten or GO.lengthen
+
+== Author
+
+Anand (lucky.developer@gmail.com)
